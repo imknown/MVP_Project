@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-   <!-- <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>-->
+    <color name="colorAccent">#FF4081</color>
 
     <!--Common-->
     <color name="white">#FFFFFF</color>
-    <color name="common_blue">#4676E7</color>
+    <color name="black">#000000</color>
+    <!--Theme-->
+    <color name="colorBluePrimary">#4676E7</color>
 </resources>

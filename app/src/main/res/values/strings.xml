@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MVP_Project</string>
+    <string name="app_title">干货分享</string>
+    <string name="menu_android">Android</string>
+    <string name="menu_welfare">福利</string>
+    <string name="menu_ios">iOS</string>
+    <string name="menu_rest_video">休息视频</string>
+    <string name="menu_expanding_resources">拓展资源</string>
+    <string name="menu_front">前端</string>
+    <string name="menu_all">全部</string>
 </resources>
