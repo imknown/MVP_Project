@@ -52,6 +52,8 @@ dependencies {
     compile "com.jakewharton.rxbinding:rxbinding:0.4.0"
     apt "com.google.dagger:dagger-compiler:$daggerVersion"
     compile "com.google.dagger:dagger:$daggerVersion"
+    compile 'com.jakewharton:butterknife:8.0.1'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile files('src/libs/ksoap2-android-assembly-3.0.0-jar-with-dependencies.jar')
 }
 
