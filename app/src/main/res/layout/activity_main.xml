@@ -4,29 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
-    tools:context="com.example.darkwh.mvp_project.MainActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_height="wrap_content"
+    tools:context=".activities.MainActivity">
+    
+    <com.example.darkwh.mvp_project.common.widget.MyTitleBar
+        android:id="@+id/title_bar"
         android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:fitsSystemWindows="true"
         android:background="?attr/colorPrimary">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_title"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-    </android.support.v7.widget.Toolbar>
-
-    <TextView
-        android:text="Hello World!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"/>
+    </com.example.darkwh.mvp_project.common.widget.MyTitleBar>
 
 </LinearLayout>
