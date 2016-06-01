@@ -18,7 +18,7 @@ public abstract class ToolBarActivity extends AppCompatActivity {
     }
 
     protected void initTitleBar(MyTitleBar titleBar){
-        setSupportActionBar(titleBar);
+        setSupportActionBar(titleBar.getTitleBar());
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         titleBar.bindActivity(this);
         titleBar.setCanBack(true);
