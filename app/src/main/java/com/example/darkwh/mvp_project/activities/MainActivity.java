@@ -20,11 +20,16 @@ public class MainActivity extends ToolBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initTitleBar(titleBar);
         initViews();
     }
 
-    private void initViews(){
-        setSupportActionBar(titleBar);
-        titleBar.setLeftBtnId(R.mipmap.ic_back);
+    private void initViews() {
     }
+
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_title_bar, menu);
+        return true;
+    }*/
 }

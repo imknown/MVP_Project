@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/BlueTheme">
-        <activity android:name=".demo.ToolbarDemoActivity">
+        <activity android:name="com.example.darkwh.mvp_project.demo.ToolbarDemoActivity">
             <!--<intent-filter>
 
                 <action android:name="android.intent.action.MAIN"/>
@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>-->
         </activity>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name="com.example.darkwh.mvp_project.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
