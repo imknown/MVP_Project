@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.darkwh.mvp_project.R;
@@ -18,10 +19,12 @@ import butterknife.ButterKnife;
 /**
  * Created by darkwh on 2016/5/31.
  */
-public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListener {
+public class MyTitleBar extends LinearLayout implements Toolbar.OnMenuItemClickListener {
 
     @BindView(R.id.text_title)
     TextView textTitle;
+    @BindView(R.id.titleBar)
+    Toolbar titleBar;
 
     private Activity activity;
     private int icon_back = R.mipmap.ic_back;
@@ -39,8 +42,8 @@ public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListen
 
     public void setCanBack(boolean canback) {
         if (canback) {
-            setNavigationIcon(icon_back);
-            setNavigationOnClickListener(v -> {
+            titleBar.setNavigationIcon(icon_back);
+            titleBar.setNavigationOnClickListener(v -> {
                 finishActivity();
             });
         }
@@ -48,35 +51,36 @@ public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListen
 
     public void setCanBack(boolean canBack, int resourceId) {
         if (canBack) {
-            setNavigationIcon(resourceId);
-            setNavigationOnClickListener(v -> {
+            titleBar.setNavigationIcon(resourceId);
+            titleBar.setNavigationOnClickListener(v -> {
                 finishActivity();
             });
         }
     }
 
-    private void finishActivity(){
+    private void finishActivity() {
         if (Build.VERSION.SDK_INT >= 21) {
             activity.finishAfterTransition();
-        } else {
+        }
+        else {
             activity.finish();
         }
     }
 
 
-    public void setCustomNavigationIcon(OnClickListener listener){
-        setNavigationIcon(icon_reorder);
+    public void setCustomNavigationIcon(OnClickListener listener) {
+        titleBar.setNavigationIcon(icon_reorder);
         setNavigationListener(listener);
     }
 
-    public void setCustomNavigationIcon(int resourceId, OnClickListener listener){
-        setNavigationIcon(resourceId);
+    public void setCustomNavigationIcon(int resourceId, OnClickListener listener) {
+        titleBar.setNavigationIcon(resourceId);
         setNavigationListener(listener);
     }
 
 
     public void setNavigationListener(OnClickListener listener) {
-        setNavigationOnClickListener(listener);
+        titleBar.setNavigationOnClickListener(listener);
     }
 
     public void setTextTitle(String str) {
@@ -91,5 +95,9 @@ public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListen
                 break;
         }
         return true;
+    }
+
+    public Toolbar getTitleBar() {
+        return titleBar;
     }
 }
