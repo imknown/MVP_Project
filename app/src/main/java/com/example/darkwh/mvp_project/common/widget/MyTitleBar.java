@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.darkwh.mvp_project.R;
+import com.example.darkwh.mvp_project.common.listener.MyTitlebarListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +24,7 @@ public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListen
     @BindView(R.id.text_title)
     TextView textTitle;
 
+    private MyTitlebarListener titlebarListener;
     private Activity activity;
     private int icon_back = R.mipmap.ic_back;
     private int icon_reorder = R.mipmap.ic_reorder;
@@ -35,6 +37,10 @@ public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListen
 
     public void bindActivity(Activity activity) {
         this.activity = activity;
+    }
+
+    public void setTitlebarListener(MyTitlebarListener titlebarListener) {
+        this.titlebarListener = titlebarListener;
     }
 
     public void setCanBack(boolean canback) {
@@ -91,11 +97,18 @@ public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListen
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.home:
-//                Toast.makeText(context,"测试一下",Toast.LENGTH_SHORT).show();
+            case R.id.action_save:
+                titlebarListener.onSaveBtnClick();
+                break;
+            case R.id.action_collection:
+                titlebarListener.onCollectionBtnClick();
+                break;
+            case R.id.action_share:
+                titlebarListener.onShareBtnClick();
                 break;
         }
         return true;
     }
+
 
 }

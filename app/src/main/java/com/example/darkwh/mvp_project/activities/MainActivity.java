@@ -31,14 +31,10 @@ public class MainActivity extends ToolBarActivity {
         titleBar.setCustomNavigationIcon(v->{
             Toast.makeText(getBaseContext(),"测试一下",Toast.LENGTH_SHORT).show();
         });
+        initMenu(true,true,true);
     }
 
     private void initViews() {
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_title_bar, menu);
-        return true;
-    }*/
 }
