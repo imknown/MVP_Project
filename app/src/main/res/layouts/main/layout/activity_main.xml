@@ -17,5 +17,4 @@
         android:background="?attr/colorPrimary">
     </com.example.darkwh.mvp_project.common.widget.MyTitleBar>
     
-
 </LinearLayout>

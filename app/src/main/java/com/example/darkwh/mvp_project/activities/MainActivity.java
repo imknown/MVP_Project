@@ -1,6 +1,7 @@
 package com.example.darkwh.mvp_project.activities;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.common.base.ToolBarActivity;
@@ -20,8 +21,16 @@ public class MainActivity extends ToolBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        initTitleBar(titleBar);
+        setTitleBar(titleBar);
         initViews();
+    }
+
+    @Override
+    protected void configTitleBar() {
+        titleBar.setTextTitle(R.string.app_title);
+        titleBar.setCustomNavigationIcon(v->{
+            Toast.makeText(getBaseContext(),"测试一下",Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void initViews() {

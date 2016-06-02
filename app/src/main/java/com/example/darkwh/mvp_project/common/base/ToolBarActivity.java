@@ -11,16 +11,23 @@ import com.example.darkwh.mvp_project.common.widget.MyTitleBar;
  */
 public abstract class ToolBarActivity extends AppCompatActivity {
 
+    private MyTitleBar titleBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    protected void initTitleBar(MyTitleBar titleBar){
-        setSupportActionBar(titleBar.getTitleBar());
+    protected void setTitleBar(MyTitleBar titleBar){
+        this.titleBar = titleBar;
+        setSupportActionBar(titleBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         titleBar.bindActivity(this);
+        configTitleBar();
+    }
+
+
+    protected void configTitleBar() {
         titleBar.setCanBack(true);
     }
 

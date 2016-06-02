@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.darkwh.mvp_project.R;
@@ -19,12 +18,10 @@ import butterknife.ButterKnife;
 /**
  * Created by darkwh on 2016/5/31.
  */
-public class MyTitleBar extends LinearLayout implements Toolbar.OnMenuItemClickListener {
+public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListener {
 
     @BindView(R.id.text_title)
     TextView textTitle;
-    @BindView(R.id.titleBar)
-    Toolbar titleBar;
 
     private Activity activity;
     private int icon_back = R.mipmap.ic_back;
@@ -32,7 +29,7 @@ public class MyTitleBar extends LinearLayout implements Toolbar.OnMenuItemClickL
 
     public MyTitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        View view = LayoutInflater.from(context).inflate(R.layout.common_titlebar, this);
+        View view = LayoutInflater.from(context).inflate(R.layout.title_text, this);
         ButterKnife.bind(view);
     }
 
@@ -42,8 +39,8 @@ public class MyTitleBar extends LinearLayout implements Toolbar.OnMenuItemClickL
 
     public void setCanBack(boolean canback) {
         if (canback) {
-            titleBar.setNavigationIcon(icon_back);
-            titleBar.setNavigationOnClickListener(v -> {
+            setNavigationIcon(icon_back);
+            setNavigationOnClickListener(v -> {
                 finishActivity();
             });
         }
@@ -51,8 +48,8 @@ public class MyTitleBar extends LinearLayout implements Toolbar.OnMenuItemClickL
 
     public void setCanBack(boolean canBack, int resourceId) {
         if (canBack) {
-            titleBar.setNavigationIcon(resourceId);
-            titleBar.setNavigationOnClickListener(v -> {
+            setNavigationIcon(resourceId);
+            setNavigationOnClickListener(v -> {
                 finishActivity();
             });
         }
@@ -69,22 +66,26 @@ public class MyTitleBar extends LinearLayout implements Toolbar.OnMenuItemClickL
 
 
     public void setCustomNavigationIcon(OnClickListener listener) {
-        titleBar.setNavigationIcon(icon_reorder);
+        setNavigationIcon(icon_reorder);
         setNavigationListener(listener);
     }
 
     public void setCustomNavigationIcon(int resourceId, OnClickListener listener) {
-        titleBar.setNavigationIcon(resourceId);
+        setNavigationIcon(resourceId);
         setNavigationListener(listener);
     }
 
 
     public void setNavigationListener(OnClickListener listener) {
-        titleBar.setNavigationOnClickListener(listener);
+        setNavigationOnClickListener(listener);
     }
 
     public void setTextTitle(String str) {
         textTitle.setText(str);
+    }
+
+    public void setTextTitle(int resourceID) {
+        textTitle.setText(resourceID);
     }
 
     @Override
@@ -97,7 +98,4 @@ public class MyTitleBar extends LinearLayout implements Toolbar.OnMenuItemClickL
         return true;
     }
 
-    public Toolbar getTitleBar() {
-        return titleBar;
-    }
 }
