@@ -5,8 +5,6 @@ package com.example.darkwh.mvp_project.common.listener;
  */
 public interface MyTitlebarListener {
 
-    void onNavigationClick();
-
     void onSaveBtnClick();
 
     void onCollectionBtnClick();

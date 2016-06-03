@@ -52,8 +52,8 @@ public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListen
         }
     }
 
-    public void setCanBack(boolean canBack, int resourceId) {
-        if (canBack) {
+    public void setCanBack(boolean canback, int resourceId) {
+        if (canback) {
             setNavigationIcon(resourceId);
             setNavigationOnClickListener(v -> {
                 finishActivity();
@@ -82,7 +82,7 @@ public class MyTitleBar extends Toolbar implements Toolbar.OnMenuItemClickListen
     }
 
 
-    public void setNavigationListener(OnClickListener listener) {
+    private void setNavigationListener(OnClickListener listener) {
         setNavigationOnClickListener(listener);
     }
 

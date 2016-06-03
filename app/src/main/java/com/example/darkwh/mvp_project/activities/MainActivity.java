@@ -27,11 +27,10 @@ public class MainActivity extends ToolBarActivity {
 
     @Override
     protected void configTitleBar() {
-        titleBar.setTextTitle(R.string.app_title);
-        titleBar.setCustomNavigationIcon(v->{
+        setTextTitle(R.string.app_title);
+        setCustomNavigationIcon(v->{
             Toast.makeText(getBaseContext(),"测试一下",Toast.LENGTH_SHORT).show();
         });
-        initMenu(true,true,true);
     }
 
     private void initViews() {
