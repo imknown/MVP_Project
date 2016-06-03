@@ -12,9 +12,9 @@
         <!--APP Bar底色-->
         <item name="colorPrimary">@color/colorBluePrimary</item>
         <!--状态栏底色-->
-        <item name="colorPrimaryDark">@color/colorBluePrimary</item>
+        <!--<item name="colorPrimaryDark">@color/colorBluePrimary</item>-->
         <!--状态栏是否半透明-->
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="AppTheme.Base" parent="Theme.AppCompat">

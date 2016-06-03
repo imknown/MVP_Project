@@ -1,7 +1,8 @@
 package com.example.darkwh.mvp_project.activities;
 
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
 
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.common.base.ToolBarActivity;
@@ -15,6 +16,10 @@ public class MainActivity extends ToolBarActivity {
 
     @BindView(R.id.title_bar)
     MyTitleBar titleBar;
+    @BindView(R.id.drawerlayout)
+    DrawerLayout drawerlayout;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,7 @@ public class MainActivity extends ToolBarActivity {
     @Override
     protected void configTitleBar() {
         setTextTitle(R.string.app_title);
-        setCustomNavigationIcon(v-> Toast.makeText(getBaseContext(),"测试一下",Toast.LENGTH_SHORT).show());
+        setCustomNavigationIcon(v -> drawerlayout.openDrawer(Gravity.LEFT));
     }
 
     private void initViews() {
