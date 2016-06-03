@@ -28,9 +28,7 @@ public class MainActivity extends ToolBarActivity {
     @Override
     protected void configTitleBar() {
         setTextTitle(R.string.app_title);
-        setCustomNavigationIcon(v->{
-            Toast.makeText(getBaseContext(),"测试一下",Toast.LENGTH_SHORT).show();
-        });
+        setCustomNavigationIcon(v-> Toast.makeText(getBaseContext(),"测试一下",Toast.LENGTH_SHORT).show());
     }
 
     private void initViews() {
