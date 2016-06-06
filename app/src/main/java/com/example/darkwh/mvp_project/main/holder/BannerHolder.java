@@ -16,7 +16,7 @@ public class BannerHolder implements Holder<Integer> {
     @Override
     public View createView(Context context) {
         imageView = new ImageView(context);
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         return imageView;
     }
 

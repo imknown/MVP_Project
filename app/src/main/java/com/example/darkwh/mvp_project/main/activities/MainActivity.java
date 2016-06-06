@@ -50,6 +50,8 @@ public class MainActivity extends ToolBarActivity {
         viewList.add(R.mipmap.banner2);
         viewList.add(R.mipmap.banner3);
         viewList.add(R.mipmap.banner4);
+        viewList.add(R.mipmap.banner5);
+        viewList.add(R.mipmap.banner6);
         //自定义你的Holder，实现更多复杂的界面，不一定是图片翻页，其他任何控件翻页亦可。
         convenientBanner.setPages(() -> new BannerHolder(), viewList)
                 //设置两个点图片作为翻页指示器，不设置则没有指示器，可以根据自己需求自行配合自己的指示器,不需要圆点指示器可用不设
