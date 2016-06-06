@@ -63,4 +63,16 @@ public class MainActivity extends ToolBarActivity {
                 //设置指示器的方向
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        convenientBanner.startTurning(3000);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        convenientBanner.stopTurning();
+    }
 }
