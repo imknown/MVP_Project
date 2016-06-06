@@ -36,7 +36,7 @@ android {
 buildscript {
 
     ext {
-        retrofit2Version='2.0.2'
+        retrofit2Version = '2.0.2'
         daggerVersion = '2.2'
     }
 
@@ -49,8 +49,11 @@ buildscript {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:design:23.2.1'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:percent:23.3.0'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
     compile "com.squareup.retrofit2:retrofit:$retrofit2Version"
     compile "com.squareup.retrofit2:converter-gson:$retrofit2Version"
     compile("com.squareup.retrofit2:converter-simplexml:$retrofit2Version") {
@@ -66,8 +69,10 @@ dependencies {
     compile "com.google.dagger:dagger:$daggerVersion"
     compile 'com.jakewharton:butterknife:8.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
-    compile files('src/libs/ksoap2-android-assembly-3.0.0-jar-with-dependencies.jar')
-
+    //ViewPagerIndicator
+    compile 'com.viewpagerindicator:library:2.4.1'
+    //广告轮播
+    compile 'com.bigkoo:convenientbanner:2.0.5'
 }
 
 android {
