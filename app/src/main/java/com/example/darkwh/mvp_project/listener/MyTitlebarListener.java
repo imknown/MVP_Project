@@ -1,4 +1,4 @@
-package com.example.darkwh.mvp_project.common.listener;
+package com.example.darkwh.mvp_project.listener;
 
 /**
  * Created by darkwh on 2016/5/31.

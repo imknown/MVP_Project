@@ -1,4 +1,4 @@
-package com.example.darkwh.mvp_project.common.widget;
+package com.example.darkwh.mvp_project.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.darkwh.mvp_project.R;
-import com.example.darkwh.mvp_project.common.listener.MyTitlebarListener;
+import com.example.darkwh.mvp_project.listener.MyTitlebarListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.example.darkwh.mvp_project.main.activities;
+package com.example.darkwh.mvp_project.main.home;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -8,18 +8,22 @@ import android.widget.Toast;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.example.darkwh.mvp_project.R;
-import com.example.darkwh.mvp_project.common.base.ToolBarActivity;
-import com.example.darkwh.mvp_project.common.widget.MyTitleBar;
-import com.example.darkwh.mvp_project.main.holder.BannerHolder;
+import com.example.darkwh.mvp_project.base.ToolBarActivity;
+import com.example.darkwh.mvp_project.component.DaggerTestComponent;
+import com.example.darkwh.mvp_project.component.TestComponent;
+import com.example.darkwh.mvp_project.holders.BannerHolder;
+import com.example.darkwh.mvp_project.module.TestModule;
+import com.example.darkwh.mvp_project.widget.MyTitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends ToolBarActivity {
-
+public class MainActivity extends ToolBarActivity implements HomeContract.View {
 
     @BindView(R.id.title_bar)
     MyTitleBar titleBar;
@@ -28,14 +32,20 @@ public class MainActivity extends ToolBarActivity {
     @BindView(R.id.convenientBanner)
     ConvenientBanner convenientBanner;
 
+    TestComponent testComponent;
+    @Inject
+    HomePresenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initInject();
         setTitleBar(titleBar);
         initViews();
+        presenter.test();
     }
 
     @Override
@@ -44,7 +54,14 @@ public class MainActivity extends ToolBarActivity {
         setCustomNavigationIcon(v -> drawerlayout.openDrawer(Gravity.LEFT));
     }
 
+    private void initInject(){
+        testComponent = DaggerTestComponent.builder().testModule(new TestModule(this)).build();
+        testComponent.inject(this);
+    }
+
     private void initViews() {
+        drawerlayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+
         List<Integer> viewList = new ArrayList<>();
         viewList.add(R.mipmap.banner1);
         viewList.add(R.mipmap.banner2);
@@ -77,4 +94,21 @@ public class MainActivity extends ToolBarActivity {
         super.onPause();
         convenientBanner.stopTurning();
     }
+
+    @Override
+    public void setBanner() {
+
+    }
+
+    @Override
+    public void setRecommend() {
+
+    }
+
+    @Override
+    public void test() {
+        Toast.makeText(getBaseContext(),"测试一下",Toast.LENGTH_SHORT).show();
+    }
+
+
 }

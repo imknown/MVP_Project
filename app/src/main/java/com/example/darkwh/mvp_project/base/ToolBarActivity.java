@@ -1,19 +1,18 @@
-package com.example.darkwh.mvp_project.common.base;
+package com.example.darkwh.mvp_project.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
 
 import com.example.darkwh.mvp_project.R;
-import com.example.darkwh.mvp_project.common.listener.MyTitlebarListener;
-import com.example.darkwh.mvp_project.common.widget.MyTitleBar;
+import com.example.darkwh.mvp_project.listener.MyTitlebarListener;
+import com.example.darkwh.mvp_project.widget.MyTitleBar;
 
 /**
  * Created by darkwh on 2016/5/31.
  */
-public class ToolBarActivity extends AppCompatActivity implements MyTitlebarListener {
+public class ToolBarActivity extends BaseActivity implements MyTitlebarListener {
 
     private MyTitleBar titleBar;
     private int icon_save = R.mipmap.ic_save;

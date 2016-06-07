@@ -1,4 +1,4 @@
-package com.example.darkwh.mvp_project.main.holder;
+package com.example.darkwh.mvp_project.holders;
 
 import android.content.Context;
 import android.view.View;
