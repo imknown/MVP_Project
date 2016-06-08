@@ -1,6 +1,8 @@
 package com.example.darkwh.mvp_project.component;
 
-import com.example.darkwh.mvp_project.base.BaseActivity;
+import android.content.Context;
+
+import com.example.darkwh.mvp_project.base.BaseApplication;
 import com.example.darkwh.mvp_project.module.AppModule;
 
 import javax.inject.Singleton;
@@ -14,5 +16,7 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
 
-    void inject(BaseActivity baseActivity);
+    void inject(BaseApplication baseApplication);
+
+    Context conext();
 }

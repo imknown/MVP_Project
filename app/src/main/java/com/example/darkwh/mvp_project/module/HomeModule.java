@@ -11,17 +11,17 @@ import dagger.Provides;
  * Created by darkwh on 2016/6/7.
  */
 @Module
-public class TestModule {
+public class HomeModule {
 
     private final HomeContract.View view;
 
-    public TestModule(HomeContract.View view) {
+    public HomeModule(HomeContract.View view) {
         this.view = view;
     }
 
     @PerActivity
     @Provides
-    public HomePresenter providePresenter() {
+    public HomeContract.Presenter providePresenter() {
         return new HomePresenter(view);
     }
 }

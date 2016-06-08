@@ -1,5 +1,6 @@
 package com.example.darkwh.mvp_project.main.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
@@ -9,10 +10,10 @@ import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.base.ToolBarActivity;
-import com.example.darkwh.mvp_project.component.DaggerTestComponent;
-import com.example.darkwh.mvp_project.component.TestComponent;
+import com.example.darkwh.mvp_project.component.DaggerHomeComponent;
+import com.example.darkwh.mvp_project.component.HomeComponent;
 import com.example.darkwh.mvp_project.holders.BannerHolder;
-import com.example.darkwh.mvp_project.module.TestModule;
+import com.example.darkwh.mvp_project.module.HomeModule;
 import com.example.darkwh.mvp_project.widget.MyTitleBar;
 
 import java.util.ArrayList;
@@ -25,6 +26,12 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends ToolBarActivity implements HomeContract.View {
 
+    HomeComponent testComponent;
+    @Inject
+    HomeContract.Presenter presenter;
+    @Inject
+    Context context;
+
     @BindView(R.id.title_bar)
     MyTitleBar titleBar;
     @BindView(R.id.drawerlayout)
@@ -32,9 +39,6 @@ public class MainActivity extends ToolBarActivity implements HomeContract.View {
     @BindView(R.id.convenientBanner)
     ConvenientBanner convenientBanner;
 
-    TestComponent testComponent;
-    @Inject
-    HomePresenter presenter;
 
 
     @Override
@@ -55,7 +59,11 @@ public class MainActivity extends ToolBarActivity implements HomeContract.View {
     }
 
     private void initInject(){
-        testComponent = DaggerTestComponent.builder().testModule(new TestModule(this)).build();
+        testComponent = DaggerHomeComponent.builder()
+                .appComponent(getAppComponent())
+                .activityModule(getActivityModule())
+                .homeModule(new HomeModule(this))
+                .build();
         testComponent.inject(this);
     }
 
