@@ -10,26 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/BlueTheme">
         <activity android:name=".demo.ToolbarDemoActivity">
-
-            <!--
-            <intent-filter>
-
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-            -->
         </activity>
         <activity android:name=".main.home.MainActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".demo.RecyclerviewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".demo.RecyclerviewActivity">
-        </activity>
-        <activity android:name=".demo.Main2Activity">
         </activity>
     </application>
 
