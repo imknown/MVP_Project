@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <com.example.darkwh.mvp_project.widget.MyTitleBar
         android:id="@+id/title_bar"
@@ -14,10 +14,10 @@
         android:background="?attr/colorPrimary">
     </com.example.darkwh.mvp_project.widget.MyTitleBar>
 
-    <com.bigkoo.convenientbanner.ConvenientBanner
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/convenientBanner"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:canLoop="true"/>
+    <!--<com.bigkoo.convenientbanner.ConvenientBanner-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/convenientBanner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"-->
+        <!--app:canLoop="true"/>-->
 </LinearLayout>

@@ -1,6 +1,6 @@
 package com.example.darkwh.mvp_project.component;
 
-import com.example.darkwh.mvp_project.main.home.MainActivity;
+import com.example.darkwh.mvp_project.main.MainActivity;
 import com.example.darkwh.mvp_project.module.ActivityModule;
 import com.example.darkwh.mvp_project.module.HomeModule;
 import com.example.darkwh.mvp_project.scope.PerActivity;
