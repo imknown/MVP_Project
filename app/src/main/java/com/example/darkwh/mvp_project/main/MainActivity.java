@@ -24,6 +24,8 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends ToolBarActivity implements View.OnClickListener {
 
@@ -79,6 +81,11 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
         HomeFragment homeFragment = new HomeFragment();
         transaction.replace(R.id.framelayout, homeFragment);
         transaction.commit();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://gank.io/api/data/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
     }
 
     @OnClick({R.id.ll_welfare, R.id.ll_android, R.id.ll_ios, R.id.ll_front, R.id.ll_exresources, R.id.ll_rest_video})
