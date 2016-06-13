@@ -8,27 +8,19 @@ import com.example.darkwh.mvp_project.base.BaseView;
  */
 public class HomeContract {
 
-    public interface View extends BaseView{
+    public interface View extends BaseView {
 
-        void setBanner();
+        void updateUI();
 
-        void setRecommend();
-
-        void test();
     }
 
-    public interface Presenter extends BasePresenter{
+    public interface Presenter extends BasePresenter {
 
-        //获取Banner数据
-        void getBanner();
-
-        //获取每日推荐内容
-        void getRecommend();
-
-        void test();
+        void getShareData(String type, int num, int page);
     }
 
     public interface Model {
 
+        void getShareData(String type, int num, int page);
     }
 }
