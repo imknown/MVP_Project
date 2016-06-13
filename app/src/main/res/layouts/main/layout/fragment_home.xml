@@ -5,5 +5,11 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 
 </LinearLayout>

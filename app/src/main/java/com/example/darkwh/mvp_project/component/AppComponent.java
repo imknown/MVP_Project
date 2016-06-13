@@ -2,6 +2,7 @@ package com.example.darkwh.mvp_project.component;
 
 import android.content.Context;
 
+import com.example.darkwh.mvp_project.api.GankApi;
 import com.example.darkwh.mvp_project.base.BaseApplication;
 import com.example.darkwh.mvp_project.module.AppModule;
 
@@ -19,4 +20,6 @@ public interface AppComponent {
     void inject(BaseApplication baseApplication);
 
     Context conext();
+
+    GankApi gankApi();
 }

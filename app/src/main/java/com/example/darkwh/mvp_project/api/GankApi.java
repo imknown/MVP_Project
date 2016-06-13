@@ -12,6 +12,14 @@ import rx.Observable;
  */
 public interface GankApi {
 
-    @GET("/{type}/{num}/{page}")
-    Observable<BaseEntity<ShareEntity>> getShareData(@Path("type") String type, @Path("num") String num, @Path("page") String page);
+    /**
+     * 共享数据查询
+     *
+     * @param type 数据类型
+     * @param num  查询数量
+     * @param page 页数
+     * @return
+     */
+    @GET("data/{type}/{num}/{page}")
+    Observable<BaseEntity<ShareEntity>> getShareData(@Path("type") String type, @Path("num") int num, @Path("page") int page);
 }
