@@ -76,7 +76,7 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
         setDefaultFragment();
     }
 
-    private void setDefaultFragment(){
+    private void setDefaultFragment() {
         llWelfare.setSelected(true);
         showModule(llWelfare);
     }

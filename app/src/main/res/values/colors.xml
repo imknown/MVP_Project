@@ -16,4 +16,7 @@
     <color name="colorBluePrimary">#4676E7</color>
 
     <color name="background_gray">#DDDDDD</color>
+    <color name="black_title">#323232</color>
+    <color name="black_content">#646464</color>
+    <color name="black_subtitle">#909090</color>
 </resources>

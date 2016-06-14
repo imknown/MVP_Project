@@ -39,7 +39,6 @@ public class ToolbarDemoActivity extends AppCompatActivity implements Toolbar.On
     private void initViews() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(R.mipmap.ic_back);
         toolbar.setOnMenuItemClickListener(this);
     }
