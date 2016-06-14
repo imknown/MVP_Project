@@ -3,6 +3,8 @@ package com.example.darkwh.mvp_project.api;
 import com.example.darkwh.mvp_project.entity.BaseEntity;
 import com.example.darkwh.mvp_project.entity.ShareEntity;
 
+import java.util.List;
+
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
@@ -21,5 +23,5 @@ public interface GankApi {
      * @return
      */
     @GET("data/{type}/{num}/{page}")
-    Observable<BaseEntity<ShareEntity>> getShareData(@Path("type") String type, @Path("num") int num, @Path("page") int page);
+    Observable<BaseEntity<List<ShareEntity>>> getShareData(@Path("type") String type, @Path("num") int num, @Path("page") int page);
 }

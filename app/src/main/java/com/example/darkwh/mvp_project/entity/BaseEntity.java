@@ -1,7 +1,5 @@
 package com.example.darkwh.mvp_project.entity;
 
-import java.util.List;
-
 /**
  * Created by darkwh on 2016/6/12.
  */
@@ -9,7 +7,7 @@ public class BaseEntity<T> {
 
     private boolean error;
 
-    private List<T> results;
+    private T results;
 
     public boolean isError() {
         return error;
@@ -19,11 +17,11 @@ public class BaseEntity<T> {
         this.error = error;
     }
 
-    public List<T> getResults() {
+    public T getResults() {
         return results;
     }
 
-    public void setResults(List<T> results) {
+    public void setResults(T results) {
         this.results = results;
     }
 }

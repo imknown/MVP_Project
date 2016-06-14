@@ -21,7 +21,7 @@ public class ActivityModule {
     @PerActivity
     @Provides
     public BaseActivity provideActivity() {
-        return this.activity;
+        return activity;
     }
 
 }

@@ -2,7 +2,7 @@ package com.example.darkwh.mvp_project.module;
 
 import com.example.darkwh.mvp_project.main.home.HomeContract;
 import com.example.darkwh.mvp_project.main.home.HomePresenter;
-import com.example.darkwh.mvp_project.scope.PerActivity;
+import com.example.darkwh.mvp_project.scope.PerFragment;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,7 +19,7 @@ public class HomeModule {
         this.view = view;
     }
 
-    @PerActivity
+    @PerFragment
     @Provides
     public HomeContract.Presenter providePresenter() {
         return new HomePresenter(view);

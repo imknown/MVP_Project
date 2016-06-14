@@ -53,7 +53,6 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
     private AndroidFragment androidFragment;
     private IosFragment iosFragment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,4 +160,5 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
             fragmentTransaction.hide(val);
         }
     }
+
 }
