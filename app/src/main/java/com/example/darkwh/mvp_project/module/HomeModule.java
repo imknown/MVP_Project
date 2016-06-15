@@ -1,6 +1,7 @@
 package com.example.darkwh.mvp_project.module;
 
 import com.example.darkwh.mvp_project.main.home.HomeContract;
+import com.example.darkwh.mvp_project.main.home.HomeModel;
 import com.example.darkwh.mvp_project.main.home.HomePresenter;
 import com.example.darkwh.mvp_project.scope.PerFragment;
 
@@ -21,7 +22,7 @@ public class HomeModule {
 
     @PerFragment
     @Provides
-    public HomeContract.Presenter providePresenter() {
-        return new HomePresenter(view);
+    public HomeContract.Presenter providePresenter(HomeModel model) {
+        return new HomePresenter(view,model);
     }
 }

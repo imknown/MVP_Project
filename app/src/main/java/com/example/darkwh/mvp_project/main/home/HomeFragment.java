@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.adapter.BaseRecyclerAdapter;
+import com.example.darkwh.mvp_project.api.GankApi;
 import com.example.darkwh.mvp_project.base.BaseFragment;
 import com.example.darkwh.mvp_project.component.DaggerHomeComponent;
 import com.example.darkwh.mvp_project.component.HomeComponent;
@@ -19,6 +20,8 @@ import com.example.darkwh.mvp_project.entity.ShareEntity;
 import com.example.darkwh.mvp_project.holders.BaseHolder;
 import com.example.darkwh.mvp_project.holders.MeiZhiHolder;
 import com.example.darkwh.mvp_project.module.HomeModule;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -39,12 +42,16 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     PtrClassicFrameLayout refreshView;
     @BindView(R.id.recyckerView)
     RecyclerView recyckerView;
-
     HomeComponent homeComponent;
     @Inject
     HomeContract.Presenter presenter;
     @Inject
     Context context;
+    @Inject
+    GankApi gankApi;
+    private int num = 10;//每次请求图片的个数
+    private int page = 1;//当前请求的页数
+    private String type = "福利";//请求的种类
 
     private BaseRecyclerAdapter<ShareEntity> mAdapter = new BaseRecyclerAdapter<ShareEntity>(R.layout.item_meizhi) {
         @Override
@@ -60,6 +67,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         ButterKnife.bind(this, view);
         initComponent();
         initViews();
+        presenter.getShareData(gankApi, type, num, 1, true);
         return view;
     }
 
@@ -74,7 +82,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     private void initViews() {
         refreshView.setPtrHandler(this);
-        recyckerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        recyckerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyckerView.setAdapter(mAdapter);
     }
 
@@ -85,11 +93,16 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-        Toast.makeText(getActivity(), "开始刷新", Toast.LENGTH_SHORT).show();
+        presenter.getShareData(gankApi, type, num, 1, true);
     }
 
     @Override
-    public void updateUI() {
+    public void onRefreshComplete(List<ShareEntity> data) {
+        Toast.makeText(context,"刷新完成",Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onLoadMoreComplete(List<ShareEntity> data) {
+        Toast.makeText(context,"加载更多完成",Toast.LENGTH_SHORT).show();
     }
 }

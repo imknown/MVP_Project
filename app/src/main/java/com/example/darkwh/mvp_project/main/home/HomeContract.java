@@ -17,13 +17,16 @@ public class HomeContract {
 
     public interface View extends BaseView {
 
-        void updateUI();
+        void onRefreshComplete(List<ShareEntity> data);
+
+        void onLoadMoreComplete(List<ShareEntity> data);
 
     }
 
     public interface Presenter extends BasePresenter {
 
-        void getShareData(GankApi gankApi, String type, int num, int page);
+        void getShareData(GankApi gankApi, String type, int num, int page, boolean isRefresh);
+
     }
 
     public interface Model {
