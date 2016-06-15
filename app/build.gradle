@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
-
+apply plugin: 'android-apt'
 android {
     compileSdkVersion 23
     buildToolsVersion '23.0.2'
@@ -39,6 +39,7 @@ buildscript {
     ext {
         retrofit2Version = '2.0.2'
         daggerVersion = '2.2'
+        butterknifeVersion='8.0.1'
     }
 
     repositories {
@@ -70,8 +71,8 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     apt "com.google.dagger:dagger-compiler:$daggerVersion"
     compile "com.google.dagger:dagger:$daggerVersion"
-    compile 'com.jakewharton:butterknife:8.0.1'
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    compile "com.jakewharton:butterknife:$butterknifeVersion"
+    apt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
     //ViewPagerIndicator
     compile 'com.viewpagerindicator:library:2.4.1'
     //广告轮播

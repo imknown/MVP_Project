@@ -27,6 +27,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -49,6 +50,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     Context context;
     @Inject
     GankApi gankApi;
+    private Unbinder unbinder;
     private int num = 10;//每次请求图片的个数
     private int page = 1;//当前请求的页数
     private String type = "福利";//请求的种类
@@ -64,11 +66,17 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, null);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
         presenter.getShareData(gankApi, type, num, 1, true);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     private void initComponent() {
@@ -98,11 +106,13 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshComplete(List<ShareEntity> data) {
-        Toast.makeText(context,"刷新完成",Toast.LENGTH_SHORT).show();
+        mAdapter.setData(data);
+        mAdapter.notifyDataSetChanged();
+        refreshView.refreshComplete();
     }
 
     @Override
     public void onLoadMoreComplete(List<ShareEntity> data) {
-        Toast.makeText(context,"加载更多完成",Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "加载更多完成", Toast.LENGTH_SHORT).show();
     }
 }

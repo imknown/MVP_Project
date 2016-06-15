@@ -22,7 +22,7 @@ public class MeiZhiHolder extends BaseHolder<ShareEntity> {
 
     public MeiZhiHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(itemView);
+        ButterKnife.bind(this,itemView);
     }
 
     @Override
