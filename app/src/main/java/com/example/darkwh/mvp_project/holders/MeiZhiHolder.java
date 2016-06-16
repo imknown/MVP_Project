@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.entity.ShareEntity;
+import com.example.darkwh.mvp_project.utils.ImageUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 public class MeiZhiHolder extends BaseHolder<ShareEntity> {
 
     //14
-    String[] str = {"测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果","测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果","测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果"};
+    String[] str = {"测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果", "测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果", "测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果"};
 
     @BindView(R.id.img_meizhi)
     ImageView img_meizhi;
@@ -38,7 +38,7 @@ public class MeiZhiHolder extends BaseHolder<ShareEntity> {
 
     @Override
     public void dataBinding(ShareEntity data) {
-        Glide.with(context).load(data.getUrl()).crossFade().into(img_meizhi);
+        ImageUtil.loadImage(context, data.getUrl(), img_meizhi);
         int x = 1 + (int) (Math.random() * 42);
         String content = data.getDesc();
         for (int i = 0; i < x; i++) {
