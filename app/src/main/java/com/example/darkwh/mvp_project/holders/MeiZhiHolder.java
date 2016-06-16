@@ -1,9 +1,11 @@
 package com.example.darkwh.mvp_project.holders;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.entity.ShareEntity;
 
@@ -15,15 +17,19 @@ import butterknife.ButterKnife;
  */
 public class MeiZhiHolder extends BaseHolder<ShareEntity> {
 
+    //14
+    String[] str = {"测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果","测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果","测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果"};
+
     @BindView(R.id.img_meizhi)
     ImageView img_meizhi;
     @BindView(R.id.text_description)
     TextView text_description;
 
-    public MeiZhiHolder(View itemView) {
-        super(itemView);
-        ButterKnife.bind(this,itemView);
+    public MeiZhiHolder(View itemView, Context context) {
+        super(itemView, context);
+        ButterKnife.bind(this, itemView);
     }
+
 
     @Override
     public void initViews() {
@@ -32,6 +38,12 @@ public class MeiZhiHolder extends BaseHolder<ShareEntity> {
 
     @Override
     public void dataBinding(ShareEntity data) {
-        text_description.setText("Text");
+        Glide.with(context).load(data.getUrl()).crossFade().into(img_meizhi);
+        int x = 1 + (int) (Math.random() * 42);
+        String content = data.getDesc();
+        for (int i = 0; i < x; i++) {
+            content += str[i];
+        }
+        text_description.setText(content);
     }
 }

@@ -31,6 +31,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseHo
         data_list.addAll(data);
     }
 
+
     @Override
     public int getItemCount() {
         return data_list.size();
@@ -38,7 +39,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseHo
 
     @Override
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent,false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
         return provideBaseHolder(itemView);
     }
 

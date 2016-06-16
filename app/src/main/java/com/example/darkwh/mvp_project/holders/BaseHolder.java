@@ -1,5 +1,6 @@
 package com.example.darkwh.mvp_project.holders;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -8,10 +9,12 @@ import android.view.View;
  */
 public abstract class BaseHolder<T> extends RecyclerView.ViewHolder {
 
+    protected Context context;
     View itemView;
 
-    public BaseHolder(View itemView) {
+    public BaseHolder(View itemView, Context context) {
         super(itemView);
+        this.context = context;
     }
 
     public void setItemView(View itemView) {

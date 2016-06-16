@@ -58,7 +58,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     private BaseRecyclerAdapter<ShareEntity> mAdapter = new BaseRecyclerAdapter<ShareEntity>(R.layout.item_meizhi) {
         @Override
         public BaseHolder provideBaseHolder(View itemView) {
-            return new MeiZhiHolder(itemView);
+            return new MeiZhiHolder(itemView, context);
         }
     };
 
@@ -92,6 +92,12 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         refreshView.setPtrHandler(this);
         recyckerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyckerView.setAdapter(mAdapter);
+        recyckerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 
     @Override
@@ -106,6 +112,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshComplete(List<ShareEntity> data) {
+        page = 1;
         mAdapter.setData(data);
         mAdapter.notifyDataSetChanged();
         refreshView.refreshComplete();
@@ -113,6 +120,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onLoadMoreComplete(List<ShareEntity> data) {
+        page++;
         Toast.makeText(context, "加载更多完成", Toast.LENGTH_SHORT).show();
     }
 }
