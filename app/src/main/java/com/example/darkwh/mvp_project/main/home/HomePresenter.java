@@ -23,6 +23,7 @@ public class HomePresenter implements HomeContract.Presenter {
         this.view = view;
     }
 
+    //TODO 取消标记,再开一个方法(尽量少用标记,容易造成阅读困难)
     @Override
     public void getShareData(GankApi gankApi, String type, int num, int page, boolean isRefresh) {
         model.getShareData(gankApi, type, num, page)
