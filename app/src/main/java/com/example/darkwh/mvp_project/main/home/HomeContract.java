@@ -25,7 +25,9 @@ public class HomeContract {
 
     public interface Presenter extends BasePresenter {
 
-        void getShareData(GankApi gankApi, String type, int num, int page, boolean isRefresh);
+        void getShareData(GankApi gankApi, String type, int num, int page);
+
+        void getMoreData(GankApi gankApi, String type, int num, int page);
 
     }
 

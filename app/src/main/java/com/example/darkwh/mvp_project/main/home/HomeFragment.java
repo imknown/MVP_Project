@@ -68,7 +68,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
-        presenter.getShareData(gankApi, type, num, 1, true);
+        presenter.getShareData(gankApi, type, num, 1);
         return view;
     }
 
@@ -92,7 +92,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         recyckerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyckerView.setAdapter(mAdapter);
         recyckerView.setScrolledToBottomListener(() -> {
-            presenter.getShareData(gankApi,type,num,page+1,false);
+            presenter.getMoreData(gankApi,type,num,page+1);
         });
     }
 
@@ -103,7 +103,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-        presenter.getShareData(gankApi, type, num, 1, true);
+        presenter.getShareData(gankApi, type, num, 1);
     }
 
     @Override

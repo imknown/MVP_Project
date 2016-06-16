@@ -23,21 +23,29 @@ public class HomePresenter implements HomeContract.Presenter {
         this.view = view;
     }
 
-    //TODO 取消标记,再开一个方法(尽量少用标记,容易造成阅读困难)
     @Override
-    public void getShareData(GankApi gankApi, String type, int num, int page, boolean isRefresh) {
+    public void getShareData(GankApi gankApi, String type, int num, int page) {
         model.getShareData(gankApi, type, num, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(listBaseEntity -> listBaseEntity.getResults())
                 .subscribe(
                         shareEntities -> {
-                            if (isRefresh) {
                                 view.onRefreshComplete(shareEntities);
-                            }
-                            else {
-                                view.onLoadMoreComplete(shareEntities);
-                            }
+                        },
+                        e -> view.onNetError(e)
+                );
+    }
+
+    @Override
+    public void getMoreData(GankApi gankApi, String type, int num, int page) {
+        model.getShareData(gankApi, type, num, page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(listBaseEntity -> listBaseEntity.getResults())
+                .subscribe(
+                        shareEntities -> {
+                            view.onLoadMoreComplete(shareEntities);
                         },
                         e -> view.onNetError(e)
                 );
