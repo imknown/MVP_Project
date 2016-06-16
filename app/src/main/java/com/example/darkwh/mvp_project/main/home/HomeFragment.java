@@ -3,12 +3,10 @@ package com.example.darkwh.mvp_project.main.home;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.adapter.BaseRecyclerAdapter;
@@ -20,6 +18,7 @@ import com.example.darkwh.mvp_project.entity.ShareEntity;
 import com.example.darkwh.mvp_project.holders.BaseHolder;
 import com.example.darkwh.mvp_project.holders.MeiZhiHolder;
 import com.example.darkwh.mvp_project.module.HomeModule;
+import com.example.darkwh.mvp_project.widget.MyRecyclerView;
 
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     @BindView(R.id.refresh_view)
     PtrClassicFrameLayout refreshView;
     @BindView(R.id.recyckerView)
-    RecyclerView recyckerView;
+    MyRecyclerView recyckerView;
     HomeComponent homeComponent;
     @Inject
     HomeContract.Presenter presenter;
@@ -92,17 +91,8 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         refreshView.setPtrHandler(this);
         recyckerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyckerView.setAdapter(mAdapter);
-        recyckerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
+        recyckerView.setScrolledToBottomListener(() -> {
+            presenter.getShareData(gankApi,type,num,page+1,false);
         });
     }
 
@@ -126,7 +116,11 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onLoadMoreComplete(List<ShareEntity> data) {
-        page++;
-        Toast.makeText(context, "加载更多完成", Toast.LENGTH_SHORT).show();
+        if(data != null){
+            page++;
+            mAdapter.getMore(data);
+            mAdapter.notifyDataSetChanged();
+        }
+        recyckerView.executeComplete();
     }
 }

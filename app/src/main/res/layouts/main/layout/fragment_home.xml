@@ -14,11 +14,11 @@
         app:ptr_duration_to_close="200"
         app:ptr_duration_to_close_header="500">
         
-        <android.support.v7.widget.RecyclerView
+        <com.example.darkwh.mvp_project.widget.MyRecyclerView
             android:id="@+id/recyckerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </android.support.v7.widget.RecyclerView>
+        </com.example.darkwh.mvp_project.widget.MyRecyclerView>
     </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 
 </LinearLayout>
