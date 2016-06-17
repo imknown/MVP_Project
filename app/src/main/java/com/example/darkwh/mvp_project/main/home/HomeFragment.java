@@ -37,8 +37,8 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @BindView(R.id.refresh_view)
     PtrClassicFrameLayout refreshView;
-    @BindView(R.id.recyckerView)
-    MyRecyclerView recyckerView;
+    @BindView(R.id.recyclerView)
+    MyRecyclerView recyclerView;
     HomeComponent homeComponent;
     @Inject
     HomeContract.Presenter presenter;
@@ -86,9 +86,9 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     private void initViews() {
         refreshView.setPtrHandler(this);
-        recyckerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        recyckerView.setAdapter(mAdapter);
-        recyckerView.setScrolledToBottomListener(() -> {
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setScrolledToBottomListener(() -> {
             presenter.getMoreData(gankApi,type,num,page+1);
         });
     }
@@ -118,6 +118,6 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
             mAdapter.getMore(data);
             mAdapter.notifyDataSetChanged();
         }
-        recyckerView.executeComplete();
+        recyclerView.executeComplete();
     }
 }
