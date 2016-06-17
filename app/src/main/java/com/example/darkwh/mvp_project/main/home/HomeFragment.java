@@ -12,12 +12,9 @@ import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.adapter.BaseRecyclerAdapter;
 import com.example.darkwh.mvp_project.api.GankApi;
 import com.example.darkwh.mvp_project.base.BaseFragment;
-import com.example.darkwh.mvp_project.component.DaggerHomeComponent;
-import com.example.darkwh.mvp_project.component.HomeComponent;
 import com.example.darkwh.mvp_project.entity.ShareEntity;
 import com.example.darkwh.mvp_project.holders.BaseHolder;
 import com.example.darkwh.mvp_project.holders.MeiZhiHolder;
-import com.example.darkwh.mvp_project.module.HomeModule;
 import com.example.darkwh.mvp_project.widget.MyRecyclerView;
 
 import java.util.List;

@@ -5,4 +5,9 @@
             <solid android:color="@color/background_gray"/>
         </shape>
     </item>
+    <item android:state_selected="true">
+        <shape>
+            <solid android:color="@color/background_gray"/>
+        </shape>
+    </item>
 </selector>

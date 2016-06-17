@@ -146,8 +146,8 @@
     <orderEntry type="library" exported="" name="adapter-rxjava-2.0.2" level="project" />
     <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" name="rxandroid-1.1.0" level="project" />
-    <orderEntry type="library" exported="" name="rxjava-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="converter-gson-2.0.2" level="project" />
+    <orderEntry type="library" exported="" name="rxjava-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="eventbus-3.0.0" level="project" />
     <orderEntry type="library" exported="" name="design-23.3.0" level="project" />
     <orderEntry type="library" exported="" name="rxbinding-0.4.0" level="project" />

@@ -1,8 +1,8 @@
-package com.example.darkwh.mvp_project.component;
+package com.example.darkwh.mvp_project.main.home;
 
-import com.example.darkwh.mvp_project.main.home.HomeFragment;
+import com.example.darkwh.mvp_project.component.AppComponent;
+import com.example.darkwh.mvp_project.component.FragmentComponent;
 import com.example.darkwh.mvp_project.module.FragmentModule;
-import com.example.darkwh.mvp_project.module.HomeModule;
 import com.example.darkwh.mvp_project.scope.PerFragment;
 
 import dagger.Component;
