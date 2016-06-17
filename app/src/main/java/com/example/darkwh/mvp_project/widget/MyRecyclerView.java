@@ -2,6 +2,8 @@ package com.example.darkwh.mvp_project.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
@@ -19,7 +21,13 @@ public class MyRecyclerView extends RecyclerView {
 
     }
 
+    public enum LayoutManagerType {
+        LINEAR,
+        GRID,
+        STAGGERED
+    }
 
+    private LayoutManagerType layoutManagerType;
     private ScrolledToBottomListener bottomListener;
     private boolean isOnload = false;
     int[] lastPositions;
@@ -40,13 +48,41 @@ public class MyRecyclerView extends RecyclerView {
     @Override
     public void onScrolled(int dx, int dy) {
         super.onScrolled(dx, dy);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) getLayoutManager();
-        if (lastPositions == null) {
-            lastPositions = new int[staggeredGridLayoutManager.getSpanCount()];
+
+        RecyclerView.LayoutManager layoutManager = getLayoutManager();
+        if (layoutManagerType == null) {
+            if (layoutManager instanceof LinearLayoutManager) {
+                layoutManagerType = LayoutManagerType.LINEAR;
+            }
+            else if (layoutManager instanceof GridLayoutManager) {
+                layoutManagerType = LayoutManagerType.GRID;
+            }
+            else if (layoutManager instanceof StaggeredGridLayoutManager) {
+                layoutManagerType = LayoutManagerType.STAGGERED;
+            }
+            else {
+                throw new RuntimeException("Unsupported LayoutManager used. Valid ones are LinearLayoutManager, GridLayoutManager and StaggeredGridLayoutManager");
+            }
         }
-        staggeredGridLayoutManager.findLastVisibleItemPositions(lastPositions);//不是很理解
-        lastVisibleItemPosition = findMax(lastPositions);
+
+        switch (layoutManagerType) {
+            case LINEAR:
+                lastVisibleItemPosition = ((LinearLayoutManager) layoutManager).findLastVisibleItemPosition();
+                break;
+            case GRID:
+                lastVisibleItemPosition = ((GridLayoutManager) layoutManager).findLastVisibleItemPosition();
+                break;
+            case STAGGERED:
+                StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) getLayoutManager();
+                if (lastPositions == null) {
+                    lastPositions = new int[staggeredGridLayoutManager.getSpanCount()];
+                }
+                staggeredGridLayoutManager.findLastVisibleItemPositions(lastPositions);//不是很理解
+                lastVisibleItemPosition = findMax(lastPositions);
+                break;
+        }
     }
+
 
     @Override
     public void onScrollStateChanged(int state) {

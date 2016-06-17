@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
  */
 public class MeiZhiHolder extends BaseHolder<ShareEntity> {
 
-    //14
     String[] str = {"测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果", "测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果", "测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果"};
 
     @BindView(R.id.img_meizhi)
