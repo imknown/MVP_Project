@@ -10,11 +10,10 @@ import android.view.ViewGroup;
 
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.adapter.BaseRecyclerAdapter;
-import com.example.darkwh.mvp_project.api.GankApi;
 import com.example.darkwh.mvp_project.base.BaseFragment;
-import com.example.darkwh.mvp_project.entity.ShareEntity;
 import com.example.darkwh.mvp_project.holders.BaseHolder;
 import com.example.darkwh.mvp_project.holders.MeiZhiHolder;
+import com.example.darkwh.mvp_project.bean.ShareBean;
 import com.example.darkwh.mvp_project.widget.MyRecyclerView;
 
 import java.util.List;
@@ -44,14 +43,12 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     HomeContract.Presenter presenter;
     @Inject
     Context context;
-    @Inject
-    GankApi gankApi;
     private Unbinder unbinder;
     private int num = 10;//每次请求图片的个数
     private int page = 1;//当前请求的页数
     private String type = "福利";//请求的种类
 
-    private BaseRecyclerAdapter<ShareEntity> mAdapter = new BaseRecyclerAdapter<ShareEntity>(R.layout.item_meizhi) {
+    private BaseRecyclerAdapter<ShareBean> mAdapter = new BaseRecyclerAdapter<ShareBean>(R.layout.item_meizhi) {
         @Override
         public BaseHolder provideBaseHolder(View itemView) {
             return new MeiZhiHolder(itemView, context);
@@ -65,7 +62,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
-        presenter.getShareData(gankApi, type, num, 1);
+        presenter.getShareData(type, num, 1);
         return view;
     }
 
@@ -89,7 +86,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setScrolledToBottomListener(() -> {
-            presenter.getMoreData(gankApi,type,num,page+1);
+            presenter.getMoreData(type,num,page+1);
         });
     }
 
@@ -100,11 +97,11 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-        presenter.getShareData(gankApi, type, num, 1);
+        presenter.getShareData(type, num, 1);
     }
 
     @Override
-    public void onRefreshComplete(List<ShareEntity> data) {
+    public void onRefreshComplete(List<ShareBean> data) {
         page = 1;
         mAdapter.setData(data);
         mAdapter.notifyDataSetChanged();
@@ -112,7 +109,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     }
 
     @Override
-    public void onLoadMoreComplete(List<ShareEntity> data) {
+    public void onLoadMoreComplete(List<ShareBean> data) {
         if(data != null){
             page++;
             mAdapter.getMore(data);

@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.darkwh.mvp_project.R;
-import com.example.darkwh.mvp_project.entity.ShareEntity;
+import com.example.darkwh.mvp_project.bean.ShareBean;
 import com.example.darkwh.mvp_project.utils.ImageUtil;
 
 import butterknife.BindView;
@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 /**
  * Created by darkwh on 2016/6/14.
  */
-public class MeiZhiHolder extends BaseHolder<ShareEntity> {
+public class MeiZhiHolder extends BaseHolder<ShareBean> {
 
     String[] str = {"测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果", "测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果", "测", "试", "文", "字", ",", "用", "于", "体", "现", "瀑", "布", "流", "效", "果"};
 
@@ -36,7 +36,7 @@ public class MeiZhiHolder extends BaseHolder<ShareEntity> {
     }
 
     @Override
-    public void dataBinding(ShareEntity data) {
+    public void dataBinding(ShareBean data) {
         ImageUtil.loadImage(context, data.getUrl(), img_meizhi);
         int x = 1 + (int) (Math.random() * 42);
         String content = data.getDesc();

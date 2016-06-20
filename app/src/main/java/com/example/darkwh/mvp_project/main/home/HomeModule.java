@@ -1,5 +1,6 @@
 package com.example.darkwh.mvp_project.main.home;
 
+import com.example.darkwh.mvp_project.api.GankApi;
 import com.example.darkwh.mvp_project.scope.PerFragment;
 
 import dagger.Module;
@@ -19,7 +20,7 @@ public class HomeModule {
 
     @PerFragment
     @Provides
-    public HomeContract.Presenter providePresenter(HomeModel model) {
-        return new HomePresenter(view,model);
+    public HomeContract.Presenter providePresenter(GankApi gankApi) {
+        return new HomePresenter(view, gankApi);
     }
 }

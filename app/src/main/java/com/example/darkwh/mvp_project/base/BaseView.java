@@ -1,6 +1,6 @@
 package com.example.darkwh.mvp_project.base;
 
-import com.example.darkwh.mvp_project.entity.BaseEntity;
+import com.example.darkwh.mvp_project.bean.BaseBean;
 
 /**
  * Created by darkwh on 2016/6/7.
@@ -19,5 +19,5 @@ public interface BaseView {
      * 适用于服务端成功标记返回false的情况
      * @param baseEntity
      */
-    void getNetResDataError(BaseEntity baseEntity);
+    void getNetResDataError(BaseBean baseEntity);
 }

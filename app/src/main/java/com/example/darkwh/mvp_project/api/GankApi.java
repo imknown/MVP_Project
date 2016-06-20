@@ -1,7 +1,7 @@
 package com.example.darkwh.mvp_project.api;
 
-import com.example.darkwh.mvp_project.entity.BaseEntity;
-import com.example.darkwh.mvp_project.entity.ShareEntity;
+import com.example.darkwh.mvp_project.bean.BaseBean;
+import com.example.darkwh.mvp_project.bean.ShareBean;
 
 import java.util.List;
 
@@ -23,5 +23,5 @@ public interface GankApi {
      * @return
      */
     @GET("data/{type}/{num}/{page}")
-    Observable<BaseEntity<List<ShareEntity>>> getShareData(@Path("type") String type, @Path("num") int num, @Path("page") int page);
+    Observable<BaseBean<List<ShareBean>>> getShareData(@Path("type") String type, @Path("num") int num, @Path("page") int page);
 }

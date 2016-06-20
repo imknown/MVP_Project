@@ -13,7 +13,7 @@ import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.adapter.BaseRecyclerAdapter;
 import com.example.darkwh.mvp_project.api.GankApi;
 import com.example.darkwh.mvp_project.base.BaseFragment;
-import com.example.darkwh.mvp_project.entity.ShareEntity;
+import com.example.darkwh.mvp_project.bean.ShareBean;
 import com.example.darkwh.mvp_project.holders.BaseHolder;
 import com.example.darkwh.mvp_project.holders.CommonNewsHolder;
 import com.example.darkwh.mvp_project.main.home.DaggerHomeComponent;
@@ -52,7 +52,7 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
     private int num = 10;
     private int page = 1;
 
-    private BaseRecyclerAdapter<ShareEntity> mAdapter = new BaseRecyclerAdapter<ShareEntity>(R.layout.item_common_news) {
+    private BaseRecyclerAdapter<ShareBean> mAdapter = new BaseRecyclerAdapter<ShareBean>(R.layout.item_common_news) {
         @Override
         public BaseHolder provideBaseHolder(View itemView) {
             return new CommonNewsHolder(itemView, context);
@@ -71,7 +71,7 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
         unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
-        presenter.getShareData(gankApi, type, num, 1);
+        presenter.getShareData(type, num, 1);
         return view;
     }
 
@@ -103,7 +103,7 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
     }
 
     @Override
-    public void onRefreshComplete(List<ShareEntity> data) {
+    public void onRefreshComplete(List<ShareBean> data) {
         if(data != null){
             page =1;
             mAdapter.setData(data);
@@ -113,7 +113,7 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
     }
 
     @Override
-    public void onLoadMoreComplete(List<ShareEntity> data) {
+    public void onLoadMoreComplete(List<ShareBean> data) {
 
     }
 

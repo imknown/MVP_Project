@@ -1,9 +1,9 @@
-package com.example.darkwh.mvp_project.entity;
+package com.example.darkwh.mvp_project.bean;
 
 /**
  * Created by darkwh on 2016/6/12.
  */
-public class BaseEntity<T> {
+public class BaseBean<T> {
 
     private boolean error;
 

@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.example.darkwh.mvp_project.component.AppComponent;
 import com.example.darkwh.mvp_project.component.DaggerFragmentComponent;
 import com.example.darkwh.mvp_project.component.FragmentComponent;
-import com.example.darkwh.mvp_project.entity.BaseEntity;
+import com.example.darkwh.mvp_project.bean.BaseBean;
 import com.example.darkwh.mvp_project.module.FragmentModule;
 
 import javax.inject.Inject;
@@ -53,7 +53,7 @@ public class BaseFragment extends Fragment implements BaseView {
     }
 
     @Override
-    public void getNetResDataError(BaseEntity baseEntity) {
+    public void getNetResDataError(BaseBean baseEntity) {
         Toast.makeText(context,"网络请求失败",Toast.LENGTH_SHORT).show();
     }
 }

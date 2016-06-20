@@ -1,10 +1,10 @@
-package com.example.darkwh.mvp_project.entity;
+package com.example.darkwh.mvp_project.bean;
 
 /**
  * Created by darkwh on 2016/6/12.
  * 分享数据的实体Bean
  */
-public class ShareEntity {
+public class ShareBean {
 
     //描述
     private String desc;
