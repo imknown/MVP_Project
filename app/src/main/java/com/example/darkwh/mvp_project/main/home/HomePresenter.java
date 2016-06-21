@@ -2,6 +2,7 @@ package com.example.darkwh.mvp_project.main.home;
 
 import com.example.darkwh.mvp_project.api.GankApi;
 
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -12,6 +13,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     private HomeContract.View view;
     private GankApi gankApi;
+    private int page=1;
 
     public HomePresenter(HomeContract.View view, GankApi gankApi) {
         this.view = view;
@@ -25,7 +27,7 @@ public class HomePresenter implements HomeContract.Presenter {
 
     @Override
     public void getShareData(String type, int num, int page) {
-        gankApi.getShareData(type, num, page)
+        Subscription subscription = gankApi.getShareData(type, num, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(listBaseEntity -> listBaseEntity.getResults())
@@ -35,6 +37,7 @@ public class HomePresenter implements HomeContract.Presenter {
                         },
                         e -> view.onNetError(e)
                 );
+        subscription.unsubscribe();
     }
 
     @Override
