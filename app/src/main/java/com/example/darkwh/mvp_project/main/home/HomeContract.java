@@ -31,9 +31,8 @@ public class HomeContract {
 
     public interface Model extends BaseModel{
 
-        void getShareData(String type, int num, int page,CallBackListener callBackListener);
+        void getData(String type, int num, int page,CallBackListener callBackListener);
 
-        void getMoreData(String type, int num, int page,CallBackListener callBackListener);
     }
 
 }

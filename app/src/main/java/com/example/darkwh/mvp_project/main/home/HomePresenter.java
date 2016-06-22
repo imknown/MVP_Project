@@ -1,8 +1,9 @@
 package com.example.darkwh.mvp_project.main.home;
 
-import android.util.Log;
-
+import com.example.darkwh.mvp_project.bean.ShareBean;
 import com.example.darkwh.mvp_project.listener.CallBackListener;
+
+import java.util.List;
 
 /**
  * Created by darkwh on 2016/6/7.
@@ -20,15 +21,16 @@ public class HomePresenter implements HomeContract.Presenter {
         this.model = model;
     }
 
-    private CallBackListener refreshListener = new CallBackListener() {
+    private CallBackListener refreshListener = new CallBackListener<List<ShareBean>>() {
         @Override
-        public <ShareEntity> void onSucess(ShareEntity data) {
-            Log.d("test","test");
+        public void onSucess(List<ShareBean> data) {
+            page = 1;
+            view.onRefreshComplete(data);
         }
 
         @Override
-        public void onError() {
-
+        public void onError(Throwable e) {
+            view.onNetError(e);
         }
 
         @Override
@@ -37,60 +39,34 @@ public class HomePresenter implements HomeContract.Presenter {
         }
     };
 
-//    private CallBackListener loadMoreListener = new CallBackListener() {
-//        @Override
-//        public void onSucess() {
-//
-//        }
-//
-//        @Override
-//        public void onError() {
-//
-//        }
-//
-//        @Override
-//        public void onComplete() {
-//
-//        }
-//    };
+    private CallBackListener loadMoreListener = new CallBackListener<List<ShareBean>>() {
+        @Override
+        public void onSucess(List<ShareBean> data) {
+            if (data != null && data.size() != 0) {
+                page++;
+            }
+            view.onLoadMoreComplete(data);
+        }
+
+        @Override
+        public void onError(Throwable e) {
+            view.onNetError(e);
+        }
+
+        @Override
+        public void onComplete() {
+
+        }
+    };
 
     @Override
     public void refresh() {
-        model.getShareData(type, num, 1, refreshListener);
+        model.getData(type, num, 1, refreshListener);
     }
 
     @Override
     public void getMore() {
-
+        model.getData(type, num, page + 1, loadMoreListener);
     }
-
-//    @Override
-//    public void getShareData(String type, int num, int page) {
-//        Subscription subscription = gankApi.getShareData(type, num, page)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .map(listBaseEntity -> listBaseEntity.getResults())
-//                .subscribe(
-//                        shareEntities -> {
-//                            view.onRefreshComplete(shareEntities);
-//                        },
-//                        e -> view.onNetError(e)
-//                );
-//        subscription.unsubscribe();
-//    }
-//
-//    @Override
-//    public void getMoreData(String type, int num, int page) {
-//        gankApi.getShareData(type, num, page)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .map(listBaseEntity -> listBaseEntity.getResults())
-//                .subscribe(
-//                        shareEntities -> {
-//                            view.onLoadMoreComplete(shareEntities);
-//                        },
-//                        e -> view.onNetError(e)
-//                );
-//    }
 
 }

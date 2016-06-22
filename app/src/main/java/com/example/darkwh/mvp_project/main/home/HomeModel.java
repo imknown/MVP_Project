@@ -17,11 +17,12 @@ public class HomeModel implements HomeContract.Model {
     GankApi gankApi;
 
     @Inject
-    public HomeModel() {}
+    public HomeModel() {
+    }
 
 
     @Override
-    public void getShareData(String type, int num, int page, CallBackListener callBackListener) {
+    public void getData(String type, int num, int page, CallBackListener callBackListener) {
         gankApi.getShareData(type, num, page)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -32,13 +33,9 @@ public class HomeModel implements HomeContract.Model {
                             callBackListener.onSucess(shareEntity);
                         },
                         e -> {
-                            callBackListener.onError();
+                            callBackListener.onError(e);
                         }
                 );
     }
 
-    @Override
-    public void getMoreData(String type, int num, int page, CallBackListener callBackListener) {
-
-    }
 }

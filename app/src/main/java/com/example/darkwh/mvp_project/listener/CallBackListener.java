@@ -3,11 +3,11 @@ package com.example.darkwh.mvp_project.listener;
 /**
  * Created by darkwh on 2016/6/22.
  */
-public interface CallBackListener {
+public interface CallBackListener<T> {
 
-    <T> void onSucess(T data);
+    void onSucess(T data);
 
-    void onError();
+    void onError(Throwable e);
 
     void onComplete();
 }

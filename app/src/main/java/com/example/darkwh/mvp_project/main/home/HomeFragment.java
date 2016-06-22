@@ -83,6 +83,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setScrolledToBottomListener(() -> {
+            presenter.getMore();
         });
     }
 
@@ -93,6 +94,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
+        presenter.refresh();
     }
 
     @Override

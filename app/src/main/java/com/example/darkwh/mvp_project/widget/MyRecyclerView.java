@@ -76,13 +76,13 @@ public class MyRecyclerView extends RecyclerView {
                 StaggeredGridLayoutManager staggeredGridLayoutManager = (StaggeredGridLayoutManager) getLayoutManager();
                 if (lastPositions == null) {
                     lastPositions = new int[staggeredGridLayoutManager.getSpanCount()];
-                }
-                staggeredGridLayoutManager.findLastVisibleItemPositions(lastPositions);//不是很理解
+                };
+                staggeredGridLayoutManager.findLastVisibleItemPositions(lastPositions);//当最后的Item为可见状态时
+//                        findLastCompletelyVisibleItemPositions(lastPositions);//当最后的Item完全加载完成时
                 lastVisibleItemPosition = findMax(lastPositions);
                 break;
         }
     }
-
 
     @Override
     public void onScrollStateChanged(int state) {
@@ -91,11 +91,9 @@ public class MyRecyclerView extends RecyclerView {
         int visibleItemCount = layoutManager.getChildCount();
         int totalItemCount = layoutManager.getItemCount();
         if (visibleItemCount > 0 && state == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItemPosition == totalItemCount - 1) {
-            if (bottomListener != null) {
-                if (!isOnload) {
-                    isOnload = true;
-                    bottomListener.onScrolled();
-                }
+            if (bottomListener != null && !isOnload) {
+                isOnload = true;
+                bottomListener.onScrolled();
             }
         }
     }
