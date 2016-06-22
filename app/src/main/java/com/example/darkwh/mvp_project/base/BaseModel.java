@@ -5,12 +5,4 @@ package com.example.darkwh.mvp_project.base;
  */
 public interface BaseModel {
 
-    interface CallBackListener{
-
-        void onSucess();
-
-        void onError();
-
-        void onComplete();
-    }
 }

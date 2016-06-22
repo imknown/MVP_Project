@@ -71,7 +71,6 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
         unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
-        presenter.getShareData(type, num, 1);
         return view;
     }
 

@@ -44,9 +44,6 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     @Inject
     Context context;
     private Unbinder unbinder;
-    private int num = 10;//每次请求图片的个数
-    private int page = 1;//当前请求的页数
-    private String type = "福利";//请求的种类
 
     private BaseRecyclerAdapter<ShareBean> mAdapter = new BaseRecyclerAdapter<ShareBean>(R.layout.item_meizhi) {
         @Override
@@ -62,7 +59,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
-        presenter.getShareData(type, num, 1);
+        presenter.refresh();
         return view;
     }
 
@@ -86,7 +83,6 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setScrolledToBottomListener(() -> {
-            presenter.getMoreData(type,num,page+1);
         });
     }
 
@@ -97,12 +93,10 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-        presenter.getShareData(type, num, 1);
     }
 
     @Override
     public void onRefreshComplete(List<ShareBean> data) {
-        page = 1;
         mAdapter.setData(data);
         mAdapter.notifyDataSetChanged();
         refreshView.refreshComplete();
@@ -110,11 +104,8 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onLoadMoreComplete(List<ShareBean> data) {
-        if(data != null){
-            page++;
-            mAdapter.getMore(data);
-            mAdapter.notifyDataSetChanged();
-        }
+        mAdapter.getMore(data);
+        mAdapter.notifyDataSetChanged();
         recyclerView.executeComplete();
     }
 }
