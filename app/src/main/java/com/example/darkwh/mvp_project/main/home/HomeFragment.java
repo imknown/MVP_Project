@@ -59,7 +59,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
-        presenter.refresh();
+        presenter.refresh("福利");
         return view;
     }
 
@@ -83,7 +83,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setScrolledToBottomListener(() -> {
-            presenter.getMore();
+            presenter.getMore("福利");
         });
     }
 
@@ -94,7 +94,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-        presenter.refresh();
+        presenter.refresh("福利");
     }
 
     @Override

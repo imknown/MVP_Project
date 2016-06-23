@@ -60,12 +60,12 @@ public class HomePresenter implements HomeContract.Presenter {
     };
 
     @Override
-    public void refresh() {
+    public void refresh(String type) {
         model.getData(type, num, 1, refreshListener);
     }
 
     @Override
-    public void getMore() {
+    public void getMore(String type) {
         model.getData(type, num, page + 1, loadMoreListener);
     }
 

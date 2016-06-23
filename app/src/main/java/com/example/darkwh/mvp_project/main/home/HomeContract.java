@@ -23,9 +23,9 @@ public class HomeContract {
 
     public interface Presenter extends BasePresenter {
 
-        void refresh();
+        void refresh(String type);
 
-        void getMore();
+        void getMore(String type);
 
     }
 
