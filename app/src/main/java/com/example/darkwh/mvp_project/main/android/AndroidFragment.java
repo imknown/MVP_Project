@@ -4,14 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.adapter.BaseRecyclerAdapter;
-import com.example.darkwh.mvp_project.api.GankApi;
 import com.example.darkwh.mvp_project.base.BaseFragment;
 import com.example.darkwh.mvp_project.bean.ShareBean;
 import com.example.darkwh.mvp_project.holders.BaseHolder;
@@ -20,6 +18,7 @@ import com.example.darkwh.mvp_project.main.home.DaggerHomeComponent;
 import com.example.darkwh.mvp_project.main.home.HomeComponent;
 import com.example.darkwh.mvp_project.main.home.HomeContract;
 import com.example.darkwh.mvp_project.main.home.HomeModule;
+import com.example.darkwh.mvp_project.widget.ItemDivider;
 import com.example.darkwh.mvp_project.widget.MyRecyclerView;
 
 import java.util.List;
@@ -42,15 +41,11 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
 
     private Unbinder unbinder;
     private HomeComponent component;
+    private String type = "Android";
     @Inject
     HomeContract.Presenter presenter;
     @Inject
-    GankApi gankApi;
-    @Inject
     Context context;
-    private String type = "Android";
-    private int num = 10;
-    private int page = 1;
 
     private BaseRecyclerAdapter<ShareBean> mAdapter = new BaseRecyclerAdapter<ShareBean>(R.layout.item_common_news) {
         @Override
@@ -71,6 +66,7 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
         unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
+        presenter.refresh(type);
         return view;
     }
 
@@ -92,28 +88,28 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
     private void initViews() {
         refreshView.setPtrHandler(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.addItemDecoration(new ItemDivider(context,R.drawable.driver_shape));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setScrolledToBottomListener(new MyRecyclerView.ScrolledToBottomListener() {
             @Override
             public void onScrolled() {
-                Log.d("recyclerview","测试一下");
+                presenter.getMore(type);
             }
         });
     }
 
     @Override
     public void onRefreshComplete(List<ShareBean> data) {
-        if(data != null){
-            page =1;
-            mAdapter.setData(data);
-            mAdapter.notifyDataSetChanged();
-        }
+        mAdapter.setData(data);
+        mAdapter.notifyDataSetChanged();
         refreshView.refreshComplete();
     }
 
     @Override
     public void onLoadMoreComplete(List<ShareBean> data) {
-
+        mAdapter.getMore(data);
+        mAdapter.notifyDataSetChanged();
+        recyclerView.executeComplete();
     }
 
     @Override
@@ -123,6 +119,6 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-
+        presenter.refresh(type);
     }
 }

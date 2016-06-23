@@ -3,45 +3,43 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/background_white">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:text="我就是传说中的标题"
+        android:textSize="20sp"
+        android:textColor="@color/black_title"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        android:background="@color/background_white">
-        
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp">
+
         <TextView
+            android:id="@+id/text_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:text="我就是传说中的标题"
-            android:textSize="22sp"
-            android:textColor="@color/blue_text"/>
-        
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2016-06-17"
-                android:textSize="15sp"
-                android:textColor="@color/black_content"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="我是作者"
-                android:textSize="15sp"
-                android:textColor="@color/black_content"/>
-        </RelativeLayout>
+            android:text="2016-06-17"
+            android:textSize="15sp"
+            android:textColor="@color/black_content"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/text_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="我是作者"
+            android:textSize="15sp"
+            android:textColor="@color/black_content"/>
+    </RelativeLayout>
 
 </LinearLayout>
