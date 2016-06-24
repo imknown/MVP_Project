@@ -20,6 +20,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
@@ -37,12 +38,14 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     PtrClassicFrameLayout refreshView;
     @BindView(R.id.recyclerView)
     MyRecyclerView recyclerView;
+    @BindString(R.string.menu_welfare)
+    String type;
+
     HomeComponent homeComponent;
     @Inject
     HomeContract.Presenter presenter;
     @Inject
     Context context;
-
     private BaseRecyclerAdapter<ShareBean> mAdapter = new BaseRecyclerAdapter<ShareBean>(R.layout.item_meizhi) {
         @Override
         public BaseHolder provideBaseHolder(View itemView) {
@@ -57,7 +60,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         unbinder = ButterKnife.bind(this, view);
         initComponent();
         initViews();
-        presenter.refresh("福利");
+        presenter.refresh(type);
         return view;
     }
 
@@ -75,7 +78,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(mAdapter);
         recyclerView.setScrolledToBottomListener(() -> {
-            presenter.getMore("福利");
+            presenter.getMore(type);
         });
     }
 
@@ -86,7 +89,7 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-        presenter.refresh("福利");
+        presenter.refresh(type);
     }
 
     @Override

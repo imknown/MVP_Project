@@ -13,8 +13,10 @@ import android.widget.LinearLayout;
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.base.ToolBarActivity;
 import com.example.darkwh.mvp_project.main.android.AndroidFragment;
+import com.example.darkwh.mvp_project.main.exresources.ExResourcesFragment;
 import com.example.darkwh.mvp_project.main.home.HomeFragment;
 import com.example.darkwh.mvp_project.main.ios.IosFragment;
+import com.example.darkwh.mvp_project.main.webfont.WebFontFragment;
 import com.example.darkwh.mvp_project.widget.MyTitleBar;
 
 import java.util.ArrayList;
@@ -52,6 +54,8 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
     private HomeFragment homeFragment;
     private AndroidFragment androidFragment;
     private IosFragment iosFragment;
+    private WebFontFragment webFontFragment;
+    private ExResourcesFragment exResourcesFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,8 +147,24 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 }
                 break;
             case R.id.ll_front:
+                if (webFontFragment == null) {
+                    webFontFragment = new WebFontFragment();
+                    fragment_list.add(webFontFragment);
+                    fragmentTransaction.add(R.id.framelayout, webFontFragment);
+                }
+                else {
+                    fragmentTransaction.show(webFontFragment);
+                }
                 break;
             case R.id.ll_exresources:
+                if (exResourcesFragment == null) {
+                    exResourcesFragment = new ExResourcesFragment();
+                    fragment_list.add(exResourcesFragment);
+                    fragmentTransaction.add(R.id.framelayout, exResourcesFragment);
+                }
+                else {
+                    fragmentTransaction.show(exResourcesFragment);
+                }
                 break;
             case R.id.ll_rest_video:
                 break;

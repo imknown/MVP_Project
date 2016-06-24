@@ -25,6 +25,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
@@ -38,18 +39,18 @@ import in.srain.cube.views.ptr.PtrHandler;
  */
 public class IosFragment extends BaseFragment implements PtrHandler, HomeContract.View {
 
+    @BindView(R.id.recycler_view)
+    MyRecyclerView recyclerView;
+    @BindView(R.id.refresh_view)
+    PtrClassicFrameLayout refreshView;
+    @BindString(R.string.menu_ios)
+    String type;
+
     private HomeComponent component;
     @Inject
     HomeContract.Presenter presenter;
     @Inject
     Context context;
-    private String type = "iOS";
-
-    @BindView(R.id.recycler_view)
-    MyRecyclerView recyclerView;
-    @BindView(R.id.refresh_view)
-    PtrClassicFrameLayout refreshView;
-
     private BaseRecyclerAdapter<ShareBean> mAdapter = new BaseRecyclerAdapter<ShareBean>(R.layout.item_common_news) {
         @Override
         public BaseHolder provideBaseHolder(View itemView) {

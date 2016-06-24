@@ -25,6 +25,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
@@ -38,8 +39,14 @@ import in.srain.cube.views.ptr.PtrHandler;
  */
 public class AndroidFragment extends BaseFragment implements HomeContract.View, PtrHandler {
 
+    @BindView(R.id.recycler_view)
+    MyRecyclerView recyclerView;
+    @BindView(R.id.refresh_view)
+    PtrClassicFrameLayout refreshView;
+    @BindString(R.string.menu_android)
+    String type;
+
     private HomeComponent component;
-    private String type = "Android";
     @Inject
     HomeContract.Presenter presenter;
     @Inject
@@ -51,11 +58,6 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
             return new CommonNewsHolder(itemView, context);
         }
     };
-
-    @BindView(R.id.recycler_view)
-    MyRecyclerView recyclerView;
-    @BindView(R.id.refresh_view)
-    PtrClassicFrameLayout refreshView;
 
     @Nullable
     @Override
