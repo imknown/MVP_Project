@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/red"
+    android:background="@color/background_white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ptr_duration_to_close="200"
+        app:ptr_duration_to_close_header="500"
+        app:ptr_resistance="3.0">
+
+        <com.example.darkwh.mvp_project.widget.MyRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.example.darkwh.mvp_project.widget.MyRecyclerView>
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 
 </LinearLayout>

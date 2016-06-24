@@ -12,10 +12,13 @@ import android.widget.LinearLayout;
 
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.base.ToolBarActivity;
+import com.example.darkwh.mvp_project.component.AppComponent;
 import com.example.darkwh.mvp_project.main.android.AndroidFragment;
 import com.example.darkwh.mvp_project.main.exresources.ExResourcesFragment;
 import com.example.darkwh.mvp_project.main.home.HomeFragment;
 import com.example.darkwh.mvp_project.main.ios.IosFragment;
+import com.example.darkwh.mvp_project.main.recommend.RecommendFragment;
+import com.example.darkwh.mvp_project.main.restvideo.RestVideoFragment;
 import com.example.darkwh.mvp_project.main.webfont.WebFontFragment;
 import com.example.darkwh.mvp_project.widget.MyTitleBar;
 
@@ -47,7 +50,7 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
     LinearLayout llExresources;
     @BindView(R.id.ll_rest_video)
     LinearLayout llRestVideo;
-    @BindViews({R.id.ll_welfare, R.id.ll_android, R.id.ll_ios, R.id.ll_front, R.id.ll_exresources, R.id.ll_rest_video})
+    @BindViews({R.id.ll_welfare, R.id.ll_android, R.id.ll_ios, R.id.ll_front, R.id.ll_exresources, R.id.ll_rest_video,R.id.ll_recommend,R.id.ll_app})
     List<LinearLayout> tab_list;
 
     private List<Fragment> fragment_list = new ArrayList<>();
@@ -56,6 +59,9 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
     private IosFragment iosFragment;
     private WebFontFragment webFontFragment;
     private ExResourcesFragment exResourcesFragment;
+    private RestVideoFragment restVideoFragment;
+    private RecommendFragment recommendFragment;
+    private AppComponent appComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +91,7 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
         showModule(llWelfare);
     }
 
-    @OnClick({R.id.ll_welfare, R.id.ll_android, R.id.ll_ios, R.id.ll_front, R.id.ll_exresources, R.id.ll_rest_video})
+    @OnClick({R.id.ll_welfare, R.id.ll_android, R.id.ll_ios, R.id.ll_front, R.id.ll_exresources, R.id.ll_rest_video,R.id.ll_recommend,R.id.ll_app})
     public void onClick(View view) {
         tabClickEvent(view);
         drawerlayout.closeDrawer(Gravity.LEFT);
@@ -167,6 +173,26 @@ public class MainActivity extends ToolBarActivity implements View.OnClickListene
                 }
                 break;
             case R.id.ll_rest_video:
+                if (restVideoFragment == null) {
+                    restVideoFragment = new RestVideoFragment();
+                    fragment_list.add(restVideoFragment);
+                    fragmentTransaction.add(R.id.framelayout, restVideoFragment);
+                }
+                else {
+                    fragmentTransaction.show(restVideoFragment);
+                }
+                break;
+            case R.id.ll_recommend:
+                if (recommendFragment == null) {
+                    recommendFragment = new RecommendFragment();
+                    fragment_list.add(recommendFragment);
+                    fragmentTransaction.add(R.id.framelayout, recommendFragment);
+                }
+                else {
+                    fragmentTransaction.show(recommendFragment);
+                }
+                break;
+            case R.id.ll_app:
                 break;
         }
         fragmentTransaction.commit();

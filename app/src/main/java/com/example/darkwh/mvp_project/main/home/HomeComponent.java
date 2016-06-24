@@ -3,6 +3,7 @@ package com.example.darkwh.mvp_project.main.home;
 import com.example.darkwh.mvp_project.component.AppComponent;
 import com.example.darkwh.mvp_project.component.FragmentComponent;
 import com.example.darkwh.mvp_project.main.android.AndroidFragment;
+import com.example.darkwh.mvp_project.main.exresources.ExResourcesFragment;
 import com.example.darkwh.mvp_project.main.ios.IosFragment;
 import com.example.darkwh.mvp_project.main.webfont.WebFontFragment;
 import com.example.darkwh.mvp_project.module.FragmentModule;
@@ -24,4 +25,6 @@ public interface HomeComponent extends FragmentComponent {
     void inject(IosFragment iosFragment);
 
     void inject(WebFontFragment webFontFragment);
+
+    void inject(ExResourcesFragment exResourcesFragment);
 }
