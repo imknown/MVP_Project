@@ -14,12 +14,15 @@ import com.example.darkwh.mvp_project.module.FragmentModule;
 
 import javax.inject.Inject;
 
+import butterknife.Unbinder;
+
 /**
  * Created by darkwh on 2016/6/14.
  */
 public class BaseFragment extends Fragment implements BaseView {
 
     private FragmentComponent fragmentComponent;
+    protected Unbinder unbinder;
 
     @Inject
     Context context;
@@ -28,6 +31,12 @@ public class BaseFragment extends Fragment implements BaseView {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initComponent();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     private void initComponent(){

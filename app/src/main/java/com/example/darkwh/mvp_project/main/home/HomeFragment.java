@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import com.example.darkwh.mvp_project.R;
 import com.example.darkwh.mvp_project.adapter.BaseRecyclerAdapter;
 import com.example.darkwh.mvp_project.base.BaseFragment;
+import com.example.darkwh.mvp_project.bean.ShareBean;
 import com.example.darkwh.mvp_project.holders.BaseHolder;
 import com.example.darkwh.mvp_project.holders.MeiZhiHolder;
-import com.example.darkwh.mvp_project.bean.ShareBean;
 import com.example.darkwh.mvp_project.widget.MyRecyclerView;
 
 import java.util.List;
@@ -22,7 +22,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -43,7 +42,6 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
     HomeContract.Presenter presenter;
     @Inject
     Context context;
-    private Unbinder unbinder;
 
     private BaseRecyclerAdapter<ShareBean> mAdapter = new BaseRecyclerAdapter<ShareBean>(R.layout.item_meizhi) {
         @Override
@@ -61,12 +59,6 @@ public class HomeFragment extends BaseFragment implements PtrHandler, HomeContra
         initViews();
         presenter.refresh("福利");
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     private void initComponent() {

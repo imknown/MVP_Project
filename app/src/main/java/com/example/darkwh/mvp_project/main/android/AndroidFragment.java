@@ -27,7 +27,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -39,7 +38,6 @@ import in.srain.cube.views.ptr.PtrHandler;
  */
 public class AndroidFragment extends BaseFragment implements HomeContract.View, PtrHandler {
 
-    private Unbinder unbinder;
     private HomeComponent component;
     private String type = "Android";
     @Inject
@@ -68,12 +66,6 @@ public class AndroidFragment extends BaseFragment implements HomeContract.View, 
         initViews();
         presenter.refresh(type);
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     private void initComponent() {
